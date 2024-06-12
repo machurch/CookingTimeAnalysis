@@ -87,6 +87,8 @@ One column that I figured would have a great effect on the cooking time of a rec
 
 What I learned from looking at this is that the distribution of the number of ingredients is centered around 8 and 9. The distribution is unimodal, and has a slight right skew. 
 
+-------------------------------------------------------------------
+
 Since my main goal is to be able to predict the time it takes to cook a recipe, I decided to create a box plot to analyze the `'minutes'` column.
 
 <iframe
