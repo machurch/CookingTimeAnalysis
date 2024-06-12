@@ -22,7 +22,7 @@ that were posted on [food.com](https://www.food.com/) in 2008. The columns that 
 The first dataset is called `recipe` and it contains 83782 unique recipes,
 one per row of the data frame. `recipe` has 10 columns described below:
 | Column             | Description                       |
-| ------------------ | --------------------------------- |
+| :----------------- |:--------------------------------- |
 | `'name'`           | Recipe Name                       |
 | `'id'`             | Recipe ID                         |
 | `'minutes'`        | Minutes to prepare recipe         |
@@ -30,5 +30,8 @@ one per row of the data frame. `recipe` has 10 columns described below:
 | `'submitted'`      | Date recipe was submitted         |
 | `'tags'`           | Food.com tags for recipe          |
 | `'nutrition'`      | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
+| `'what is up'` | i have no idea |
+|  `'does this work'` | lets see |
+
 
 
