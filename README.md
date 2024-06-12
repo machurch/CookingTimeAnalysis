@@ -6,9 +6,9 @@ Author: Marguerite Church
 
 This is a project created for the DSC 80 class at UCSD. The goal is to explore the relationship between the cook time of a recipe and other variables such as the month it was cooked, or the amount of sugar.
 
-## Introduction
+# Introduction
 
-# General Introduction
+## General Introduction
 As a college student, it is important for me to find recipes that I will
 be able to cook quickly to be able to spend more time studying. Many people with busy lifestyles have a hard time finding time to cook, so I wanted to
 see if there was a way to predict how long it would take to cook a recipe
@@ -17,10 +17,12 @@ choose recipes that cook quickly. **I want to know what factors of a recipe
 effect the cooking time the most.** To do so, I am analyzing two datasets
 that were posted on [food.com](https://www.food.com/) in 2008. The columns that are 
 
-# Data Introduction
+## Data Introduction
 
 The first dataset is called `recipe` and it contains 83782 unique recipes,
 one per row of the data frame. `recipe` has 10 columns described below:
+
+
 | Column             | Description                       |
 | :----------------- |:--------------------------------- |
 | `'name'`           | Recipe Name                       |
