@@ -76,7 +76,7 @@ I named this new datafram `'combo'` since it was a combination of the two. `'com
 
 ## Univariate Analysis
 
-One column that I figured would have a great effect on the cooking time of a recipe was the number of ingredients. To analyze this column, I made a histogram of the number of ingredients needed for all recipes in `'combo'`, here is the histogram:
+One column that I figured would have a great effect on the cooking time of a recipe was the number of ingredients. To analyze this column, I made a histogram of the `'n_ingredients'` column, which contains the number of ingredients needed for all recipes in `'combo'`, here is the histogram:
 
 <iframe
   src="assets/ingredient_count_hist.html"
@@ -84,3 +84,15 @@ One column that I figured would have a great effect on the cooking time of a rec
   height="600"
   frameborder="0"
 ></iframe>
+
+What I learned from looking at this is that the distribution of the number of ingredients is centered around 8 and 9. The distribution is unimodal, and has a slight right skew. 
+
+Since my main goal is to be able to predict the time it takes to cook a recipe, I decided to create a box plot to analyze the `'minutes'` column.
+
+<iframe
+  src="assets/minutes_box.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
