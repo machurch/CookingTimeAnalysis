@@ -99,3 +99,16 @@ Since my main goal is to be able to predict the time it takes to cook a recipe, 
 ></iframe>
 
 Looking at this plot, I can see that there are some extreme outliers. The third quartile is 60 minutes, while the max is over 1 million. This is definetly something that I will have to consider moving forward in my analysis.
+
+## Bivariate Analysis
+
+Since I am interested in the relationship between the number of ingredients a recipe needs and the amount of time it takes to cook, I decided to create a scatter plot with `'n_ingredients'` on the x-axis and `'minutes'` on the y-axis. To create this plot I had to use a subset of `'combo'` where I only kept minutes that were in the third quartile or below because the outliers made the scatter plot unreadable when working with the whole dataset.
+
+<iframe
+  src="assets/ingredients_mins.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Looking at the scatter plot, it is hard to distinguish any relationship between the two variables. There could be a slight positive correlation, but it is very small. 
