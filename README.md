@@ -19,7 +19,7 @@ that were posted on [food.com](https://www.food.com/) in 2008. The columns that 
 
 ## Data Introduction
 
-The first dataset is called `recipe` and it contains 83782 unique recipes,
+The first dataset is called `recipe` and it contains 83,782 unique recipes,
 one per row of the data frame. `recipe` has 10 columns described below:
 
 
@@ -32,8 +32,19 @@ one per row of the data frame. `recipe` has 10 columns described below:
 | `'submitted'`      | Date recipe was submitted         |
 | `'tags'`           | Food.com tags for recipe          |
 | `'nutrition'`      | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
-| `'what is up'` | i have no idea |
-|  `'does this work'` | lets see |
+| `'n_steps'` | Number of steps in recipe |
+|  `'steps'` | Text for recipe steps, in order |
+| `'description'` | User-provided description |
+
+The second data set is called `interactions` and contains 731,927 rows where each row represents a review that a user left on a recipe. Some of these recipes are from the `recipe` dataset, but others aren't. `interactions` consists of the following columns:
+
+| Column | Description |
+| :----- | :---------- |
+| `'user_id'` | User ID |
+| `'recipe_id'` | Recipe ID |
+| `'date'` | Date of interaction |
+| `'rating'` | Rating given |
+| `'review'` | Review text |
 
 
 
