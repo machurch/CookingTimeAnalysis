@@ -98,3 +98,4 @@ Since my main goal is to be able to predict the time it takes to cook a recipe, 
   frameborder="0"
 ></iframe>
 
+Looking at this plot, I can see that there are some extreme outliers. The third quartile is 60 minutes, while the max is over 1 million. This is definetly something that I will have to consider moving forward in my analysis.
