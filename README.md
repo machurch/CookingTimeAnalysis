@@ -13,8 +13,8 @@ As a college student, it is important for me to find recipes that I will
 be able to cook quickly to be able to spend more time studying. Many people with busy lifestyles have a hard time finding time to cook, so I wanted to
 see if there was a way to predict how long it would take to cook a recipe
 and what types of recipes have shorter cooking times to make it easier to
-choose recipes that cook quickly. ** I want to know what factors of a recipe
-effect the cooking time the most. ** To do so, I am analyzing two datasets
+choose recipes that cook quickly. **I want to know what factors of a recipe
+effect the cooking time the most.** To do so, I am analyzing two datasets
 that were posted on [food.com](https://www.food.com/) in 2008. The columns that are 
 
 # Data Introduction
