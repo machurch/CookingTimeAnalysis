@@ -64,7 +64,7 @@ To clean the data, I did the following:
 6. Created a `'month'` column
     - Using the data from the `'submitted'` column, I created a new column called `'month'` which only contained the `'month'` that the recipe was submitted. This allowed me to compare cooking times across months.
 
-I named this new datafram `'combo'` since it was a combination of the two, and below is the head of `'combo'`:
+I named this new datafram `'combo'` since it was a combination of the two. `'combo'` has 234,429 rows and 25 columns. Below is the head of `'combo'` with only the `'name'`, `'id'`, `'minutes'`, `'contributor_id'`, `'protein'`, '`saturated fat'`, '`carbohydrates'` and `'month'` shown for simplicity:
 
 | name                                 |     id |   minutes |   contributor_id |   protein |   saturated fat |   carbohydrates |   month |
 |:-------------------------------------|-------:|----------:|-----------------:|----------:|----------------:|----------------:|--------:|
@@ -73,3 +73,14 @@ I named this new datafram `'combo'` since it was a combination of the two, and b
 | 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
 | 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
 | 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
+
+## Univariate Analysis
+
+One column that I figured would have a great effect on the cooking time of a recipe was the number of ingredients. To analyze this column, I made a histogram of the number of ingredients needed for all recipes in `'combo'`, here is the histogram:
+
+<iframe
+  src="assets/ingredient_count_hist.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
