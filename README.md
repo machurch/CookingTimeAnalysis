@@ -110,6 +110,15 @@ Since I am interested in the relationship between the number of ingredients a re
 ></iframe>
 
 Looking at the scatter plot, it is hard to distinguish any relationship between the two variables. There could be a slight positive correlation, but it is very small. 
+--------------------------------------------------------------------------------------------------
+I also wanted to examine the relationship between the day a recipe was submitted and the amount of minutes it takes to cook. Here is a plot of the year 2008.
+<iframe
+  src="assets/calendar.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 
 ## Interesting Aggregates
 
@@ -123,4 +132,7 @@ I wanted to see how much the month a recipe was submitted played a role in being
 | (22.6, 29.8]      | 118.787  | 129.567  |  87.7541 | 102.692  |  99.4094 | 125.854  | 89.75   | 1050.3    |
 | (29.8, 37.0]      | nan      | 171.875  |  50      |  97.3333 |  60.625  | 180      | 84      |  nan      |
 
-The pivot table revealed that month 12, December, had very high mean minute counts compared to the other months shown. NaN values mean that there were no recipes submitted that month with the number of recipes in the given bin.
+The pivot table below shows months 1, 2, 3, 4, 9, 10, 11, and 12. It revealed that month 12, December, had very high mean minute counts compared to the other months shown. nan values mean that there were no recipes submitted that month with the number of recipes in the given bin.
+
+# Assessment of Missingness
+
