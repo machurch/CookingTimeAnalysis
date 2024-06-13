@@ -154,6 +154,20 @@ Here is a histogram of the generated mean number of steps compared to the true m
 ></iframe>
 As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that whether a recipe is rated or not likely depends on the number of steps it takes.
 
+### Number of Minutes
+
+To see if the mean number of minutes it takes to prepare a recipe is significantly different when the rating is missing I came up with the following hypotheses:
+**Null Hypothesis:** The mean number of minutes a recipe takes is the same when the rating is missing vs. not missing.
+**Alternate Hypothesis:** The mean number of minutes a recipe takes is different when the rating is missing vs. not missing.
+Here is a histogram of the generated mean number of minutes compared to the true mean number of minutes when the rating is missing:
+<iframe
+  src="assets/mins_ratings.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+As you can see from the plot, the observed mean is above the average generated mean, but not significantly. The p-value that I generated is 0.109, since 0.109 is greater than 0.05, I fail to reject the null hypothesis and can't conclude that whether a recipe is rated or not depends on the number of minutes it takes.
+
 
 
 
