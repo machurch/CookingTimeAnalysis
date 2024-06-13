@@ -110,12 +110,13 @@ Since I am interested in the relationship between the number of ingredients a re
 ></iframe>
 
 Looking at the scatter plot, it is hard to distinguish any relationship between the two variables. There could be a slight positive correlation, but it is very small. 
+
 --------------------------------------------------------------------------------------------------
 I also wanted to examine the relationship between the day a recipe was submitted and the amount of minutes it takes to cook. Here is a plot of the year 2008.
 <iframe
   src="assets/calendar.html"
   width="800"
-  height="600"
+  height="300"
   frameborder="0"
 ></iframe>
 
@@ -135,4 +136,12 @@ I wanted to see how much the month a recipe was submitted played a role in being
 The pivot table below shows months 1, 2, 3, 4, 9, 10, 11, and 12. It revealed that month 12, December, had very high mean minute counts compared to the other months shown. nan values mean that there were no recipes submitted that month with the number of recipes in the given bin.
 
 # Assessment of Missingness
+
+## NMAR Analysis
+
+I believe that the `'rating'` column of `'combo'` is likely NMAR because it is up to the person leaving the review to decide whether or not they want to rate the recipe. People who don't feel strongly about a recipe probably won't feel the need to go out of their way and rate it. One aspect of the review that could have a relationship with the `'rating'` column is the age of the user. Users who are retirement age may have more time on their hands to leave reviews, therefore making the `'rating'` column MAR. Since I don't have access to ages, however, I will assume that the `'rating'` column is NMAR.
+
+# Missingness Dependency
+
+
 
