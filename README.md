@@ -63,12 +63,12 @@ To clean the data, I did the following:
     - This allowed me to better analyze the dates because they would now be able to be correctly sorted.
 6. Created a `'month'` column
     - Using the data from the `'submitted'` column, I created a new column called `'month'` which only contained the `'month'` that the recipe was submitted. This allowed me to compare cooking times across months.
-7. Created a `'under_hour'` column
-    - Using the data from the `'minutes'` column, I created a new column called `'under_hour'` which is 1 if it takes less than an hour to cook the recipe, and 0 if it doesn't. I created this column so that I can use it to build a binary classification model.
+7. Created a `'under_quarter'` column
+    - Using the data from the `'minutes'` column, I created a new column called `'under_quarter'` which is 1 if it takes less than a quarter hour, 45 minutes, to cook the recipe, and 0 if it doesn't. I created this column so that I can use it to build a binary classification model.
 
-I named this new dataframe `'combo'` since it was a combination of the two. `'combo'` has 234,429 rows and 25 columns. Below is the head of `'combo'` with only the `'name'`, `'id'`, `'minutes'`, `'contributor_id'`, `'saturated fat'`, '`carbohydrates'`, `'month'`, and `'under_hour'` shown for simplicity:
+I named this new dataframe `'combo'` since it was a combination of the two. `'combo'` has 234,429 rows and 25 columns. Below is the head of `'combo'` with only the `'name'`, `'id'`, `'minutes'`, `'contributor_id'`, `'saturated fat'`, '`carbohydrates'`, `'month'`, and `'under_quarter'` shown for simplicity:
 
-| name                                 |     id |   minutes |   contributor_id |   saturated fat |   carbohydrates |   month | under_hour   |
+| name                                 |     id |   minutes |   contributor_id |   saturated fat |   carbohydrates |   month | under_quarter   |
 |:-------------------------------------|-------:|----------:|-----------------:|----------------:|----------------:|--------:|:------------|
 | 1 brownies in the world    best ever | 333281 |        40 |           985201 |              19 |               6 |      10 | 1       |
 | 1 in canada chocolate chip cookies   | 453467 |        45 |          1848091 |              51 |              26 |       4 | 1       |
@@ -187,9 +187,9 @@ From the plot, it is evident that the p-value is 0.0, and that is also what I ca
 
 # Framing a Prediction Problem
 
-My model will try to predict whether or not a recipe will take under an hour to prepare. This is a binary classification model since the recipe is either under an hour or over an hour. 
+My model will try to predict whether or not a recipe will take under 45 minutes to prepare. This is a binary classification model since the recipe is either under an 45 minutes or over. 
 
-The variable I am predicting is the column `'under_hour'`, which is 1 if the recipe takes an hour or less to prepare and 0 if it takes over an hour. I chose this variable because people who are in a time crunch may not have more than an hour to spare on cooking.
+The variable I am predicting is the column `'under_quarter'`, which is 1 if the recipe takes 45 minutes or less to prepare and 0 if it takes over. I chose this variable because people who are in a time crunch may not have more than 45 minutes to spend cooking.
 
 The metric I am choosing to evaluate my model is it's precision because I don't want people to choose a recipe thinking that they have time to cook it and then end up being wrong. 
 
@@ -197,15 +197,44 @@ The information that I know now is all of the data in the `'combo'` dataframe.
 
 # Baseline Model
 
-My baseline model is a binary classifier that uses logarithmic regression and takes in the number of ingredients a recipe needs and the month it was submitted to predict whether or not it will take under an hour to cook.
+My baseline model is a binary classifier that uses logarithmic regression and takes in the number of ingredients a recipe needs and the month it was submitted to predict whether or not it will take under 45 minutes to cook.
 
 The features that I used are `'n_ingredients'` which is quantitative, and `'month'` which is nominal. I chose to use `'n_ingredients'` because it would make sense that recipes that require more ingredients would take a longer time to prepare. I chose `'month'` because when performing my hypothesis test I learned that recipes submitted in December take a significantly longer time to prepare.
 
 To prepare `'month'` for my model, I transformed it using One Hot encoding. I left `'n_ingredients'` as-is because it is quantitative.
 
-The precision of this model is 0.76 which is pretty good considering it only took in two features. This model is pretty good because in the training data, if a recipe was predicted to take under an hour, there was a 0.76 probability that it actually took less than an hour.
+The precision of this model is 0.67 which is okay considering it only took in two features. This model is okay because in the training data, if a recipe was predicted to take under 45 minutes, there was a 0.67 probability that it actually took less than 45 minutes.
 
 # Final Model
+
+The features that I used from `combo` were, `'n_ingredients'`, `'month'`, and two that I created for the final model were `'under_30'` and `'over_60'`. I used a Logarithmic Regression classifier and my precision was 0.77. 
+
+I added `'under_30'` by finding recipes with the tag "30-minutes-or-less". `'under_30'` is nominal because the value is 1 if the recipe contains the tag and 0 if it doesn't. I believed that this would be a good feature to add because if a recipe takes under 30 minutes then it definetly takes under 45. The other feature that I added was `'over_60'` and I did this also by looking at the tags and finding the ones that contained "60-minutes-or-less", using these values, I reversed them so that a recipe would have a value of 1 in `'over_60'` if it took 60 minutes or more to prepare. I thought that this would be a useful feature because anything over 60 minutes is also over 45. 
+
+To transform `'under_30'` and `'over_60'`, I used One Hot Encoding because they were categorical variables.
+
+This model is better than the baseline one because it has a higher precision, 0.77 vs. 0.67, which means that it is less likely that someone would choose a recipe that they thought would take under 45 minutes and find out that it takes more than 45 minutes. This means that people would be able to better allocate their time.
+
+# Fairness Analysis
+
+The groups that I chose to analyze for fairness were December recipes vs. other months. 
+
+I decided on these groups because I learned from my hypothesis test that recipes submitted in December were longer than average than other recipes. I wondered if this would affect the model's precision when predicting if recipes submitted in December would take less than 45 minutes to cook.
+
+My evaluation metric will still be precision because that's what I used when creating the model.
+
+**Null Hypothesis:** There is no difference between the recall of December months and other months
+**Alternative Huypothesis:** There is a difference between the recall of December months and other months
+**Test Statistic:** The difference in precision, calculated by precision of December - precision of other months
+
+To calculate the p-value, I used a permutation test with 10000 trials, I set my significance level to be 0.05 and got a p-value of 0.0. A plot of the distribution is below:
+<iframe
+  src="assets/fair_hist.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+I noticed that the difference in precision was greater compared to the differences under the null which are mainly negative. This means that December actually had a higher precision than other months which was not what I had thought initially. Looking back, it makes sense because if most recipes in December take a while to make, then it would be easy to predict that they are over 45 minutes. 
 
 
 
