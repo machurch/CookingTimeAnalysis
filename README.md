@@ -84,7 +84,6 @@ One column that I figured would have a great effect on the cooking time of a rec
   height="600"
   frameborder="0"
 ></iframe>
-
 What I learned from looking at this is that the distribution of the number of ingredients is centered around 8 and 9. The distribution is unimodal, and has a slight right skew. 
 
 -------------------------------------------------------------------
@@ -97,7 +96,6 @@ Since my main goal is to be able to predict the time it takes to cook a recipe, 
   height="600"
   frameborder="0"
 ></iframe>
-
 Looking at this plot, I can see that there are some extreme outliers. The third quartile is 60 minutes, while the max is over 1 million. This is definetly something that I will have to consider moving forward in my analysis.
 
 ## Bivariate Analysis
@@ -112,3 +110,17 @@ Since I am interested in the relationship between the number of ingredients a re
 ></iframe>
 
 Looking at the scatter plot, it is hard to distinguish any relationship between the two variables. There could be a slight positive correlation, but it is very small. 
+
+## Interesting Aggregates
+
+I wanted to see how much the month a recipe was submitted played a role in being able to predict cooking time, so I decided to analyze this by creating a pivot table. First, I had to create a new column in `'combo'` named `'ingredient_bins'`. `'ingredient_bins'` places each value into one of 5 equally sized bins. I set `'ingredient_bins'` as the index, `'month'` as the columns, and `'minutes'` as the value to be analyzed in terms of the mean amount of minutes for the given ingredient bin and month.
+
+|        1 |        2 |        3 |        4 |        9 |       10 |      11 |        12 |
+|---------:|---------:|---------:|---------:|---------:|---------:|--------:|----------:|
+|  64.2838 | 268.483  |  95.5878 |  93.1892 | 122.742  |  60.8491 | 70.7752 |  425.288  |
+|  86.3269 |  81.9981 |  69.6562 | 114.294  |  79.2826 |  87.2387 | 79.1323 |   90.0369 |
+|  96.2355 | 162.476  | 102.952  | 114.946  |  91.42   | 135.544  | 99.0093 |  912.574  |
+| 118.787  | 129.567  |  87.7541 | 102.692  |  99.4094 | 125.854  | 89.75   | 1050.3    |
+| nan      | 171.875  |  50      |  97.3333 |  60.625  | 180      | 84      |  nan      |
+
+The pivot table revealed that month 12, December, had very high mean minute counts compared to the other months shown. NaN values mean that there were no recipes submitted that month with the number of recipes in the given bin.
