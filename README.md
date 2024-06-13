@@ -77,11 +77,10 @@ I named this new datafram `'combo'` since it was a combination of the two. `'com
 ## Univariate Analysis
 
 One column that I figured would have a great effect on the cooking time of a recipe was the number of ingredients. To analyze this column, I made a histogram of the `'n_ingredients'` column, which contains the number of ingredients needed for all recipes in `'combo'`, here is the histogram:
-
 <iframe
   src="assets/ingredient_count_hist.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 What I learned from looking at this is that the distribution of the number of ingredients is centered around 8 and 9. The distribution is unimodal, and has a slight right skew. 
@@ -89,11 +88,10 @@ What I learned from looking at this is that the distribution of the number of in
 -------------------------------------------------------------------
 
 Since my main goal is to be able to predict the time it takes to cook a recipe, I decided to create a box plot to analyze the `'minutes'` column.
-
 <iframe
   src="assets/minutes_box.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 Looking at this plot, I can see that there are some extreme outliers. The third quartile is 60 minutes, while the max is over 1 million. This is definetly something that I will have to consider moving forward in my analysis.
@@ -101,14 +99,12 @@ Looking at this plot, I can see that there are some extreme outliers. The third 
 ## Bivariate Analysis
 
 Since I am interested in the relationship between the number of ingredients a recipe needs and the amount of time it takes to cook, I decided to create a scatter plot with `'n_ingredients'` on the x-axis and `'minutes'` on the y-axis. To create this plot I had to use a subset of `'combo'` where I only kept minutes that were in the third quartile or below because the outliers made the scatter plot unreadable when working with the whole dataset.
-
 <iframe
   src="assets/ingredients_mins.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
-
 Looking at the scatter plot, it is hard to distinguish any relationship between the two variables. There could be a slight positive correlation, but it is very small. 
 
 --------------------------------------------------------------------------------------------------
@@ -116,10 +112,9 @@ I also wanted to examine the relationship between the day a recipe was submitted
 <iframe
   src="assets/calendar.html"
   width="800"
-  height="300"
+  height="200"
   frameborder="0"
 ></iframe>
-
 
 ## Interesting Aggregates
 
@@ -154,7 +149,7 @@ Here is a histogram of the generated mean number of steps compared to the true m
 <iframe
   src="assets/steps_ratings.html"
   width="800"
-  height="300"
+  height="500"
   frameborder="0"
 ></iframe>
 As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that whether a recipe is rated or not likely depends on the number of steps it takes.
