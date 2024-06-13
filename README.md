@@ -63,16 +63,18 @@ To clean the data, I did the following:
     - This allowed me to better analyze the dates because they would now be able to be correctly sorted.
 6. Created a `'month'` column
     - Using the data from the `'submitted'` column, I created a new column called `'month'` which only contained the `'month'` that the recipe was submitted. This allowed me to compare cooking times across months.
+7. Created a `'under_hour'` column
+    - Using the data from the `'minutes'` column, I created a new column called `'under_hour'` which is 1 if it takes less than an hour to cook the recipe, and 0 if it doesn't. I created this column so that I can use it to build a binary classification model.
 
-I named this new datafram `'combo'` since it was a combination of the two. `'combo'` has 234,429 rows and 25 columns. Below is the head of `'combo'` with only the `'name'`, `'id'`, `'minutes'`, `'contributor_id'`, `'protein'`, '`saturated fat'`, '`carbohydrates'` and `'month'` shown for simplicity:
+I named this new dataframe `'combo'` since it was a combination of the two. `'combo'` has 234,429 rows and 25 columns. Below is the head of `'combo'` with only the `'name'`, `'id'`, `'minutes'`, `'contributor_id'`, `'saturated fat'`, '`carbohydrates'`, `'month'`, and `'under_hour'` shown for simplicity:
 
-| name                                 |     id |   minutes |   contributor_id |   protein |   saturated fat |   carbohydrates |   month |
-|:-------------------------------------|-------:|----------:|-----------------:|----------:|----------------:|----------------:|--------:|
-| 1 brownies in the world    best ever | 333281 |        40 |           985201 |         3 |              19 |               6 |      10 |
-| 1 in canada chocolate chip cookies   | 453467 |        45 |          1848091 |        13 |              51 |              26 |       4 |
-| 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
-| 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
-| 412 broccoli casserole               | 306168 |        40 |            50969 |        22 |              36 |               3 |       5 |
+| name                                 |     id |   minutes |   contributor_id |   saturated fat |   carbohydrates |   month | under_hour   |
+|:-------------------------------------|-------:|----------:|-----------------:|----------------:|----------------:|--------:|:------------|
+| 1 brownies in the world    best ever | 333281 |        40 |           985201 |              19 |               6 |      10 | 1       |
+| 1 in canada chocolate chip cookies   | 453467 |        45 |          1848091 |              51 |              26 |       4 | 1       |
+| 412 broccoli casserole               | 306168 |        40 |            50969 |              36 |               3 |       5 | 1       |
+| 412 broccoli casserole               | 306168 |        40 |            50969 |              36 |               3 |       5 | 1       |
+| 412 broccoli casserole               | 306168 |        40 |            50969 |              36 |               3 |       5 | 1       |
 
 ## Univariate Analysis
 
@@ -182,6 +184,28 @@ To calculate the p-value, I used a permutation test where I generated 10000 diff
   frameborder="0"
 ></iframe>
 From the plot, it is evident that the p-value is 0.0, and that is also what I calculated. Since 0.0 is less than my designated significance level of 0.05, I can reject the null hypothesis and conclude that it is likely that recipes submitted in the month of December take longer to cook compared to all other recipes. 
+
+# Framing a Prediction Problem
+
+My model will try to predict whether or not a recipe will take under an hour to prepare. This is a binary classification model since the recipe is either under an hour or over an hour. 
+
+The variable I am predicting is the column `'under_hour'`, which is 1 if the recipe takes an hour or less to prepare and 0 if it takes over an hour. I chose this variable because people who are in a time crunch may not have more than an hour to spare on cooking.
+
+The metric I am choosing to evaluate my model is it's precision because I don't want people to choose a recipe thinking that they have time to cook it and then end up being wrong. 
+
+The information that I know now is all of the data in the `'combo'` dataframe.
+
+# Baseline Model
+
+My baseline model is a binary classifier that uses logarithmic regression and takes in the number of ingredients a recipe needs and the month it was submitted to predict whether or not it will take under an hour to cook.
+
+The features that I used are `'n_ingredients'` which is quantitative, and `'month'` which is nominal. I chose to use `'n_ingredients'` because it would make sense that recipes that require more ingredients would take a longer time to prepare. I chose `'month'` because when performing my hypothesis test I learned that recipes submitted in December take a significantly longer time to prepare.
+
+To prepare `'month'` for my model, I transformed it using One Hot encoding. I left `'n_ingredients'` as-is because it is quantitative.
+
+The precision of this model is 0.76 which is pretty good considering it only took in two features. This model is pretty good because in the training data, if a recipe was predicted to take under an hour, there was a 0.76 probability that it actually took less than an hour.
+
+# Final Model
 
 
 
