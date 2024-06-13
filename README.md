@@ -143,5 +143,7 @@ I believe that the `'rating'` column of `'combo'` is likely NMAR because it is u
 
 # Missingness Dependency
 
+Missingness in the blank column is dependent on blank and not dependent on blank.
+
 
 
