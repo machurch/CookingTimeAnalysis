@@ -145,7 +145,7 @@ I want to see if missingness in the `'ratings'` column is dependent on these two
 To see if the mean number of steps it takes to prepare a recipe is significantly different when the rating is missing I came up with the following hypotheses:
 **Null Hypothesis:** The mean number of steps in a recipe is the same when the rating is missing vs. not missing.
 **Alternate Hypothesis:** The mean number of steps in a recipe is different when the rating is missing vs. not missing. 
-Here is a histogram of the generated mean number of steps compared to the true mean number of steps when the rating is missing:
+Here is a histogram of the generated mean number of steps when the rating is missing compared to the true mean number of steps when the rating is missing:
 <iframe
   src="assets/steps_ratings.html"
   width="800"
@@ -159,7 +159,7 @@ As you can see from the plot, the observed mean is greater than all of the gener
 To see if the mean number of minutes it takes to prepare a recipe is significantly different when the rating is missing I came up with the following hypotheses:
 **Null Hypothesis:** The mean number of minutes a recipe takes is the same when the rating is missing vs. not missing.
 **Alternate Hypothesis:** The mean number of minutes a recipe takes is different when the rating is missing vs. not missing.
-Here is a histogram of the generated mean number of minutes compared to the true mean number of minutes when the rating is missing:
+Here is a histogram of the generated mean number of minutes when rating is missing compared to the true mean number of minutes when the rating is missing:
 <iframe
   src="assets/mins_ratings.html"
   width="800"
@@ -167,6 +167,22 @@ Here is a histogram of the generated mean number of minutes compared to the true
   frameborder="0"
 ></iframe>
 As you can see from the plot, the observed mean is above the average generated mean, but not significantly. The p-value that I generated is 0.109, since 0.109 is greater than 0.05, I fail to reject the null hypothesis and can't conclude that whether a recipe is rated or not depends on the number of minutes it takes.
+
+# Hypothesis Testing
+I will be testing whether recipes submitted in December have a longer average cooking time compared to all other recipes. I chose December because a lot of baking happens around the holidays and recipes that require baking take a decent amount of time.
+**Null Hypothesis:** Recipes submitted in December have a similar average cooking time compared to all other recipes.
+**Alternate Hypothesis:** Recipes submitted in December have a longer average cooking time compared to all other recipes.
+**Test Statistic:** Difference in means, calculated using mean minutes in December - mean minutes in all other months.
+**Significance Level:** 0.05
+To calculate the p-value, I used a permutation test where I generated 10000 differences in means. The resulting histogram is shown below:
+<iframe
+  src="assets/dec_hist.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+From the plot, it is evident that the p-value is 0.0, and that is also what I calculated. Since 0.0 is less than my designated significance level of 0.05, I can reject the null hypothesis and conclude that it is likely that recipes submitted in the month of December take longer to cook compared to all other recipes. 
+
 
 
 
