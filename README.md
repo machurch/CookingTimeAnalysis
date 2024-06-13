@@ -157,7 +157,7 @@ Here is a histogram of the generated mean number of steps compared to the true m
   height="300"
   frameborder="0"
 ></iframe>
-As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that the number of steps in a recipe likely depends on whether the recipe received a rating or not.
+As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that whether a recipe is rated or not likely depends on the number of steps it takes.
 
 
 
