@@ -52,7 +52,7 @@ The second data set is called `interactions` and contains 731,927 rows where eac
 
 To clean the data, I did the following:
 1. Left merged `recipes` and `interactions`
-    - I did this so that I would be able to work on a dataframe that contained the data from `interactions` for each recipe that occured in both dataframes. 
+    - I did this so that I would be able to work on a dataframe that contained the data from `interactions` for each recipe that occured in `'recipes'`. 
 2. Filled all ratings of 0 with np.nan
     - If you rate a recipe, the lowest you can rate it is one star which means that recipes that received a rating of 0 weren't rated at all. It would be unfair to the recipe to keep the rating at 0 when performing calculations because it would unfairly lower the average.
 3. Created a column with the average rating per recipe
@@ -139,11 +139,27 @@ The pivot table below shows months 1, 2, 3, 4, 9, 10, 11, and 12. It revealed th
 
 ## NMAR Analysis
 
-I believe that the `'rating'` column of `'combo'` is likely NMAR because it is up to the person leaving the review to decide whether or not they want to rate the recipe. People who don't feel strongly about a recipe probably won't feel the need to go out of their way and rate it. One aspect of the review that could have a relationship with the `'rating'` column is the age of the user. Users who are retirement age may have more time on their hands to leave reviews, therefore making the `'rating'` column MAR. Since I don't have access to ages, however, I will assume that the `'rating'` column is NMAR.
+I believe that the `'review'` column of `'combo'` is likely NMAR because it is up to the person who made the recipe whether or not to leave a review. People who don't feel strongly about a recipe probably won't feel the need to go out of their way and review it. One characteristic of the user that could have a relationship with the `'review'` column is their age. Users who are retirement age may have more time on their hands to leave reviews, therefore making the `'review'` column MAR. Since I don't have access to ages, however, I will assume that the `'review'` column is NMAR.
 
-# Missingness Dependency
+## Missingness Dependency
 
-Missingness in the blank column is dependent on blank and not dependent on blank.
+I want to see if missingness in the `'ratings'` column is dependent on these two columns: `'n_steps'`, and `'minutes'`.
+
+### Number of Ingredients
+
+To see if the mean number of steps it takes to prepare a recipe is significantly different when the rating is missing I came up with the following hypotheses:
+**Null Hypothesis:** The mean number of steps in a recipe is the same when the rating is missing vs. not missing.
+**Alternate Hypothesis:** The mean number of steps in a recipe is different when the rating is missing vs. not missing. 
+Here is a histogram of the generated mean number of steps compared to the true mean number of steps when the rating is missing:
+<iframe
+  src="assets/steps_ratings.html"
+  width="800"
+  height="300"
+  frameborder="0"
+></iframe>
+As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that the number of steps in a recipe likely depends on whether the recipe received a rating or not.
+
+
 
 
 
