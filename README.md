@@ -14,8 +14,8 @@ be able to cook quickly to be able to spend more time studying. Many people with
 see if there was a way to predict how long it would take to cook a recipe
 and what types of recipes have shorter cooking times to make it easier to
 choose recipes that cook quickly. **I want to know what factors of a recipe
-effect the cooking time the most.** To do so, I am analyzing two datasets
-that were posted on [food.com](https://www.food.com/) in 2008. The columns that are 
+affect the cooking time the most.** To do so, I am analyzing two datasets
+that were posted on [food.com](https://www.food.com/) in 2008. 
 
 ## Data Introduction
 
@@ -52,7 +52,7 @@ The second data set is called `interactions` and contains 731,927 rows where eac
 
 To clean the data, I did the following:
 1. Left merged `recipes` and `interactions`
-    - I did this so that I would be able to work on a dataframe that contained the data from `interactions` for each recipe that occured in `'recipes'`. 
+    - I did this so that I would be able to work on a dataframe that contained the data from `interactions` for each recipe that occured in `recipes`. 
 2. Filled all ratings of 0 with np.nan
     - If you rate a recipe, the lowest you can rate it is one star which means that recipes that received a rating of 0 weren't rated at all. It would be unfair to the recipe to keep the rating at 0 when performing calculations because it would unfairly lower the average.
 3. Created a column with the average rating per recipe
@@ -154,7 +154,7 @@ Here is a histogram of the generated mean number of steps when the rating is mis
   height="500"
   frameborder="0"
 ></iframe>
-As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0. Since the p-value is 0, I reject the null hypothesis and conclude that whether a recipe is rated or not likely depends on the number of steps it takes.
+As you can see from the plot, the observed mean is greater than all of the generated values leading to a p-value of 0.0 Since the p-value is 0, I reject the null hypothesis and conclude that whether a recipe is rated or not likely depends on the number of steps it takes.
 
 ### Number of Minutes
 
@@ -168,7 +168,7 @@ Here is a histogram of the generated mean number of minutes when rating is missi
   height="500"
   frameborder="0"
 ></iframe>
-As you can see from the plot, the observed mean is above the average generated mean, but not significantly. The p-value that I generated is 0.109, since 0.109 is greater than 0.05, I fail to reject the null hypothesis and can't conclude that whether a recipe is rated or not depends on the number of minutes it takes.
+As you can see from the plot, the observed mean is above the average generated mean, but not significantly. The p-value that I generated is 0.109, since 0.136 is greater than 0.05, I fail to reject the null hypothesis and can't conclude that whether a recipe is rated or not depends on the number of minutes it takes.
 
 # Hypothesis Testing
 I will be testing whether recipes submitted in December have a longer average cooking time compared to all other recipes. I chose December because a lot of baking happens around the holidays and recipes that require baking take a decent amount of time.
